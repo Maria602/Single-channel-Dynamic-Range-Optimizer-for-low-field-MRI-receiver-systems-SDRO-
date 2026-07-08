@@ -58,3 +58,11 @@ ard_br_autotuning = 115200
 ard_sn_interlock = '4423831313935190A0D1'
 ard_br_interlock = 115200
 ard_sn_attenuator = '242353133363518050E2'
+
+# SDRO
+ard_sn_sdro = '44238313139351507280'
+ard_br_sdro = 115200
+
+# SDRO Amplitude
+echoAmplitude = 0.0
+targetAmplitude = 48.0  # mV, optimal target based on +10dB gain measurements
