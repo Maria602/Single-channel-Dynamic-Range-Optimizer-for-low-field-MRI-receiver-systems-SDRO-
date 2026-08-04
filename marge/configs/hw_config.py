@@ -47,6 +47,7 @@ rp_ip_list = []
 rp_version = "rp-122"
 adcFactor = 13.788
 lnaGain = 45 # dB
+sdrolnaGain = 26 # dB
 temperature = 293 # k
 shimming_factor = 1e-4
 rf_min_gain = 35
@@ -65,4 +66,4 @@ ard_br_sdro = 115200
 
 # SDRO Amplitude
 echoAmplitude = 0.0
-targetAmplitude = 48.0  # mV, optimal target based on +10dB gain measurements
+targetAmplitude = 90.0  # mV, optimal target based on +10dB gain measurements
