@@ -39,6 +39,7 @@ class SDRO:
         if self.arduino.device is None:
             raise RuntimeError("SDRO Arduino not found.")
         print(f"SDRO connected on port: {self.arduino.port}")
+        time.sleep(1)
         self.set_gain(0)
 
     def disconnect(self):
@@ -172,14 +173,13 @@ class SDRO:
             if echo > 136.0:
                 print("WARNING: Signal near ADC limit. Consider using manual mode with suggest_gain().")
 
-            if abs(echo - target) <= tolerance:
-                print(f"Echo already within accuracy band ({target - tolerance:.1f}-{target + tolerance:.1f} mV). No correction applied.")
-                return
-
             correction = 20 * np.log10(target / echo)
             new_gain = int(np.round(self.current_gain + correction))
+            if new_gain > 26:
+                print("WARNING: Required gain larger than the maximum.")
             new_gain = max(-5, min(26, new_gain))
-
+            if new_gain < -5:
+                print("WARNING: Required gain lower than the minimum.")
             self.set_gain(new_gain)
             return
 
